@@ -2,30 +2,32 @@
 This is a repository for assignment 3 of the Software Quality Engineering course at the [Ben-Gurion University](https://in.bgu.ac.il/), Israel.
 
 ## Assignment Description
-In this assignment, we tested an open-source software called [$$*TODO* software name$$](https://address-of-the-project.com).
+In this assignment, we tested an open-source software called Moodle(https://address-of-the-project.com).
 
-$$*TODO* Add some general description about the software$$
+Moodle is a free and open-source learning management system written in PHP and distributed under the GNU General Public 
+License. Moodle is used for blended learning, distance education, flipped classroom and other online learning projects 
+in schools, universities, workplaces and other sectors.
 
 ## Installation
-$$*TODO* Write instructions on how to install the software and prepare the testing environment$$
+Fork this repository.
+Host Moodle on Docker.
+For usage of Cucumber or Provengo, see README.md in the respective files.
 
 ## What we tested
-$$*TODO* Add a description of the module and the user stories that you chose to test.
-For example, in the case of the Moodle example, you can write something like this:
+We tested the forum module that allows creating and commenting on discussion. We chose to test the following user stories: 
 
-We tested the quiz module that allows for creating and taking quizzes. We chose to test the following user stories: 
+*User story:* A teacher connecting to the system and changing the permissions on a forum to disallow students from
+   posting new discussions.
 
-*User story:* A teacher adds a new quiz to the course with two yes/no questions
+*Preconditions:* There is a course with a teacher and a forum
 
-*Preconditions:* There is a course with a teacher
+*Expected outcome:* The permissions for the forum are changed
 
-*Expected outcome:* The quiz is added to the course.
+*User story:* A student connecting to the system and trying to add a new discussion to a forum.
 
-*User story:* A students attempts a quiz and answers correctly.
+*Preconditions:* There is a course with a forum, the student has permissions to post to the forum.
 
-*Preconditions:* There is a course with a quiz with two yes/no questions and the quiz grade is calculated automatically and the grade is visible to the students upon submission.
-
-*Expected outcome:* The student receives 100.
+*Expected outcome:* The student posts to the forum unless the teacher changes his permissions before he posts.
 $$
 
 ## How we tested
