@@ -1,7 +1,7 @@
 /*@provengo summon selenium*/
 
 /**
- * The first 2 events are for both Student and Teacher, since the login and navigation to the forum page is identical
+ * The first event is for both Student and Teacher, since the login and navigation to the forum page is identical
  * for both of them. Login details are passed by the event(e).
  */
 defineEvent(SeleniumSession, "GoToForum", function(session, e) {
@@ -18,11 +18,9 @@ defineEvent(SeleniumSession, "GoToForum", function(session, e) {
 })
 
 /**
- * navigateToPermissions and changePermissions will be called by teacher to change the permission to start new discussions
+ * changePermissions will be called by teacher to change the permission to start new discussions
  * in the forum. This should always execute properly
  * */
-defineEvent(SeleniumSession,"NavigateToPermissions",function (session,e){
-})
 
 defineEvent(SeleniumSession,"ChangePermissions",function (session,e){
   session.click("/html/body/div[3]/div[4]/div/div[2]/nav/ul/li[6]/a");
@@ -49,10 +47,11 @@ defineEvent(SeleniumSession,"AssertCantAddNewDiscussion",function (session,e){
   session.assertText("//*[@id=\"region-main\"]/div/div[1]/p[1]","Sorry, you are not allowed to post to this forum")
 })
 
-defineEvent(SeleniumSession,"assertExistsForumPost",function (session,e) {
-  session.assertText("//tbody[tr[th[div[a[@title=\"foo\"]/tr/th/div/a/text()","foo")
-})
-defineEvent(SeleniumSession,"ConfirmDebug",function (session,e) {
+/**
+ * trigger method for Teacher to synchronize the drivers for this test.
+ * */
+defineEvent(SeleniumSession,"JustNowOnForum",function (session,e){
+
 })
 
 /**
