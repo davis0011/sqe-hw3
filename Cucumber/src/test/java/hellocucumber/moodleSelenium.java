@@ -116,25 +116,6 @@ public class moodleSelenium {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='multiline' and contains(text(),'" + courseName + "')]"))).click();
     }
 
-    // add quiz from course page
-
-
-
-
-
-
-
-
-
-    public void terminateDriver(){
-        // close all the driver windows
-        // another option - to close a browser window: driver.close();
-        driver.close();
-
-    }
-
-
-
 
 
 }

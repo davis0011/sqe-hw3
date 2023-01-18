@@ -33,8 +33,12 @@ defineEvent(SeleniumSession,"ChangePermissions",function (session,e){
   session.click("//*[@name=\"savechanges\" and @value=\"Save changes\"]");
 })
 
-defineEvent(SeleniumSession,"AddDiscussionTopic",function (session,e) {
-  // add discussion topic
+/**
+ * The precondition here is that the Teacher already changed the permissions before the Student entered the forum.
+ * This method will make sure that the 'Add discussion topic' button is not reachable by the Student.
+ * The method throws an error on the condition that the button was pressed. Equivalent to an "AssertNotClickable".
+ * */
+defineEvent(SeleniumSession,"AssertCantAddNewDiscussion",function (session,e){
   session.click("//*[contains(text(),'Add discussion topic')]");
   // write subject
   session.writeText("//*[@id=\"id_subject\"]", e.title);
@@ -42,10 +46,26 @@ defineEvent(SeleniumSession,"AddDiscussionTopic",function (session,e) {
   session.writeText("//*[@id=\"id_messageeditable\"]", e.body);
   // press the "post to forum" button
   session.click("//*[@id=\"id_submitbutton\"]");
+  session.assertText("//*[@id=\"region-main\"]/div/div[1]/p[1]","Sorry, you are not allowed to post to this forum")
 })
 
 defineEvent(SeleniumSession,"assertExistsForumPost",function (session,e) {
   session.assertText("//tbody[tr[th[div[a[@title=\"foo\"]/tr/th/div/a/text()","foo")
 })
 defineEvent(SeleniumSession,"ConfirmDebug",function (session,e) {
+})
+
+/**
+ * The precondition here is that the Teacher did NOT already change the permissions before the Student entered the forum.
+ * This method will make sure that the 'Add discussion topic' button redirects the Student to an error page from Moodle.
+ * The method throws an error on the condition that the Student does not reach the error page.
+ * */
+defineEvent(SeleniumSession,"AssertTryAddDiscussion",function (session,e){
+    try{
+        session.waitForVisibility("//*[@class=\"container-fluid tertiary-navigation\"]/div/div[2]",500)
+    }
+    catch(e){
+        return
+    }
+    throw new Error('Student managed add new discussion after having permissions removed.')
 })
