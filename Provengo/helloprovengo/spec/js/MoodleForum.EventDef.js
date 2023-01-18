@@ -17,10 +17,6 @@ defineEvent(SeleniumSession, "GoToForum", function(session, e) {
   session.click("//*[@id=\"module-4\"]/div/div[1]/div/div[1]/div/div[2]/div[2]/a");
 })
 
-defineEvent(SeleniumSession,"goToForum",function(session,e){
-  session.click("//*[@id=\"module-4\"]/div/div[1]/div/div[1]/div/div[2]/div[2]/a");
-})
-
 /**
  * navigateToPermissions and changePermissions will be called by teacher to change the permission to start new discussions
  * in the forum. This should always execute properly
@@ -47,7 +43,6 @@ defineEvent(SeleniumSession,"AddDiscussionTopic",function (session,e) {
   // press the "post to forum" button
   session.click("//*[@id=\"id_submitbutton\"]");
 })
-
 
 defineEvent(SeleniumSession,"assertExistsForumPost",function (session,e) {
   session.assertText("//tbody[tr[th[div[a[@title=\"foo\"]/tr/th/div/a/text()","foo")

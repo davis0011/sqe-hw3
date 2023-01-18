@@ -1,6 +1,6 @@
 /*@provengo summon selenium*/
 
-
+let PRECHECK = [true,false]
 story('Teacher makes forum staff only', function(){
   with (new SeleniumSession().start('http://localhost/')){
     goToForum({username: 'teacher1', password:'!Teacher123'})

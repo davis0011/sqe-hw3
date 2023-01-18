@@ -7,17 +7,18 @@ Feature: Student add new discussion and teacher makes the forum staff only
 
 
   Scenario: Student add new discussion
-    Given User on course page Username "student1" and password "!Student123"
-    When User Navigate to Forum
-    And User start new discussion
+    Given User named "student" on course page Username "student1" and password "!Student123"
+    When User named "student" Navigate to Forum
+    And User start creation for new discussion
+    And User finish creation for new discussion
     Then Discussion is in forum
 
 
   Scenario: Teacher makes forum staff only
-    Given User on course page Username "teacher1" and password "!Teacher123"
-    When User Navigate to Forum
-    And User navigate to forum premissions
-    And User delete student premission to start new discussion
+    Given User named "teacher" on course page Username "teacher1" and password "!Teacher123"
+    When User named "teacher" Navigate to Forum
+    And User navigate to forum permissions
+    And User delete student permission to start new discussion
     Then Forum staff only
 
 

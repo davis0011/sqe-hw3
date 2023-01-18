@@ -114,6 +114,9 @@ public class StepDefinitions {
         moodleT.searchStartDiss();
     }
 
+    /**
+     * Teacher only method to check forum permissions from students is removed
+     * */
     @Then("^Forum staff only$")
     public void forumStaffOnly() throws Exception {
          moodleT.forumStuffOnly();
